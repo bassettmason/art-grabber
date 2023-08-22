@@ -52,4 +52,5 @@ jobs:
         --runtime python310 \
         --trigger-http \
         --allow-unauthenticated \
-        --region us-west1
+        --region us-west1 \
+        --project media-djinn
