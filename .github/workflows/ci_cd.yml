@@ -26,6 +26,9 @@ jobs:
         pip install -r requirements-dev.txt
 
     - name: Run tests
+      env:  # Setting up the environment variables
+        RUNNING_IN_GITHUB: true
+        FANART_API_KEY: ${{ secrets.FANART_API_KEY }}
       run: pytest
 
   deploy:
