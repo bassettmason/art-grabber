@@ -1,0 +1,18 @@
+# GitHub configuration and workflows
+.github/
+
+# Pytest cache directory
+.pytest_cache/
+
+# Byte-compiled Python files
+__pycache__/
+*.pyc
+
+# Development and test files
+test_main.py
+requirements-dev.txt
+
+# Documentation
+README.MD
+
+# Add other patterns as required

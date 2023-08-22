@@ -1,0 +1,2 @@
+pytest==7.4.0
+functions-framework==3.4.0

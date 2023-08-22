@@ -1,0 +1,53 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+
+    - name: Run tests
+      run: pytest
+
+#   deploy:
+#     needs: testing
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
+
+#     - name: Setup Google Cloud SDK
+#       uses: google-github-actions/setup-gcloud@master
+#       with:
+#         version: 'latest'
+#         service_account_key: ${{ secrets.GCP_SA_KEY }}
+#         project_id: media-djinn
+#         export_default_credentials: true
+
+#     - name: Deploy to Google Cloud Functions
+#       run: |
+#         gcloud functions deploy get_art \
+#         --runtime python310 \
+#         --trigger-http \
+#         --allow-unauthenticated \
+#         --entry-point get_art \
+#         --source .
