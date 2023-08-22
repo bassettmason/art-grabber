@@ -47,7 +47,7 @@ jobs:
 
     - name: Deploy to Google Cloud Functions
       run: |
-        gcloud functions deploy get_art \
+        gcloud functions deploy art_getter \
         --entry-point get_art \
         --runtime python310 \
         --trigger-http \
