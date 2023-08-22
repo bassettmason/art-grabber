@@ -28,26 +28,22 @@ jobs:
     - name: Run tests
       run: pytest
 
-#   deploy:
-#     needs: testing
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout code
-#       uses: actions/checkout@v2
+  deploy:
+    needs: testing
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-#     - name: Setup Google Cloud SDK
-#       uses: google-github-actions/setup-gcloud@master
-#       with:
-#         version: 'latest'
-#         service_account_key: ${{ secrets.GCP_SA_KEY }}
-#         project_id: media-djinn
-#         export_default_credentials: true
-
-#     - name: Deploy to Google Cloud Functions
-#       run: |
-#         gcloud functions deploy get_art \
-#         --runtime python310 \
-#         --trigger-http \
-#         --allow-unauthenticated \
-#         --entry-point get_art \
-#         --source .
+    - name: Deploy to Google Cloud Functions
+      uses: google-github-actions/deploy-cloud-functions@v1
+      with:
+        credentials: ${{ secrets.GCP_SA_KEY }}
+        project_id: media-djinn
+        region: us-west1  # specify the region you want to deploy to, e.g., us-central1
+        name: get_art
+        entry_point: get_art
+        runtime: python310
+        source_dir: .   # This assumes that your main.py is in the root of your repo
+        trigger: http
+        allow_unauthenticated: true

@@ -15,4 +15,7 @@ requirements-dev.txt
 # Documentation
 README.MD
 
+# Git files
+.gitignore
+
 # Add other patterns as required
