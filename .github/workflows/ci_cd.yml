@@ -29,7 +29,7 @@ jobs:
       env:  # Setting up the environment variables
         RUNNING_IN_GITHUB: true
         FANART_API_KEY: ${{ secrets.FANART_API_KEY }}
-      run: pytest --no-exit-code
+      run: pytest
 
   deploy:
     needs: testing
