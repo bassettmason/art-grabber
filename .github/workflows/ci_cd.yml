@@ -52,3 +52,11 @@ jobs:
         entry_point: 'get_art'
         region: 'us-west1'
         project_id: 'media-djinn'
+        
+    - name: 'Grant invoke access to allUsers'
+      run: |
+        gcloud functions add-iam-policy-binding trailer-getter \
+        --member=allUsers \
+        --role=roles/cloudfunctions.invoker \
+        --region=us-west1 \
+        --project=media-djinn
