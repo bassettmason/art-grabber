@@ -18,7 +18,7 @@ type_data = {
         "id_keys": ['tmdb_id', 'imdb_id']
     },
     "tv": {
-        "keys": ['hdclearart', 'hdtvlogo', 'seasonbanner', 'seasonposter', 'seasonthumb', 'showbackground', 'tvbanner', 'tvposter', 'tvthumb'],
+        "keys": ['clearart', 'hdtvlogo', 'seasonbanner', 'seasonposter', 'seasonthumb', 'showbackground', 'tvbanner', 'tvposter', 'tvthumb'],
         "id_keys": ['thetvdb_id']
     }
 }
