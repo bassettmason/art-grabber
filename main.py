@@ -29,9 +29,9 @@ def get_art(request):
     if type == "movie" and not (re.match(r"^tt\d+$", id) or id.isdigit()):
         logging.error(f"Invalid 'id' parameter for movies: {id}. The 'id' must be a valid IMDb ID (e.g., tt1517268) or a Fanart ID (numeric value).")
         return ({"error": "Invalid 'id' parameter for movies. The 'id' must be a valid IMDb ID (e.g., tt1517268) or a Fanart ID (numeric value)."}, 400, headers)
-    elif type == "tv":
-        logging.error(f"Invalid 'id' parameter for TV shows: {id}. The 'id' must be a numeric TVDB ID.")
-        return ({"error": "Invalid 'id' parameter for TV shows. The 'id' must be a numeric TVDB ID."}, 400, headers)
+    # elif type == "tv":
+    #     logging.error(f"Invalid 'id' parameter for TV shows: {id}. The 'id' must be a numeric TVDB ID.")
+    #     return ({"error": "Invalid 'id' parameter for TV shows. The 'id' must be a numeric TVDB ID."}, 400, headers)
 
     logging.info(f"Starting fan art retrieval for '{type}' with ID '{id}'.")
 
